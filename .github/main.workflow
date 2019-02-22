@@ -10,6 +10,7 @@ action "Build" {
 
 action "Test" {
   uses = "docker://mongo"
-  args = "test"
+  run = "npm test"
+  # args = "test"
   needs = ["Build"]
 }
