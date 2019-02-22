@@ -1,6 +1,9 @@
-workflow "Build & Test" {
+workflow "Build, Test & Deploy" {
   on = "push"
-  resolves = ["Test"]
+  resolves = [
+    "Test",
+    "GitHub Action for Heroku",
+  ]
 }
 
 action "Build" {
@@ -9,8 +12,14 @@ action "Build" {
 }
 
 action "Test" {
-  uses = "docker://mongo"
-  run = "npm test"
-  # args = "test"
+  uses = "actions/npm@master"
+  args = "test"
   needs = ["Build"]
+}
+
+action "GitHub Action for Heroku" {
+  uses = "actions/heroku@master"
+  args = "login && push"
+  needs = ["Build"]
+  secrets = ["HEROKU_API_KEY"]
 }
