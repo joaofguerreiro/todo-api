@@ -9,7 +9,7 @@ action "Build" {
 }
 
 action "Test" {
-  uses = "actions/npm@master"
+  uses = "docker://mongo"
   args = "test"
   needs = ["Build"]
 }
