@@ -25,7 +25,7 @@ action "Heroku Login" {
 }
 
 action "Heroku Deploy" {
-  uses = "actions/heroku@466fea5e8253586a6df75b10e95447b0bfe383c1"
+  uses = "actions/heroku@master"
   needs = ["Heroku Login"]
   args = ["container:push", "--app", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
