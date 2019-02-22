@@ -19,7 +19,7 @@ action "Test" {
 
 action "Heroku Login" {
   uses = "actions/heroku@master"
-  args = "login"
+  args = "container:login"
   needs = ["Build"]
   secrets = ["HEROKU_API_KEY"]
 }
