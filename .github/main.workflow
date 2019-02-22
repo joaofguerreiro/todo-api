@@ -27,7 +27,7 @@ action "Heroku Login" {
 action "Heroku Deploy" {
   uses = "actions/heroku@466fea5e8253586a6df75b10e95447b0bfe383c1"
   needs = ["Heroku Login"]
-  args = ["container:push", "--app", "$HEROKU_APP"]
+  args = ["container:push", "--app", "$HEROKU_APP", "web"]
   secrets = ["HEROKU_API_KEY"]
   env = {
     HEROKU_APP = "murmuring-earth-23337"
